@@ -24,14 +24,14 @@ main {
   display: none;
 }
 
-#quiz-wrapper{
+#quiz-wrapper {
   display: flex;
-  flex-direction: column;
+  flex: column;
   align-items: center;
   justify-content: space-around;
 }
 
-.question{
+.question {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -39,13 +39,28 @@ main {
   width: 75%
 }
 
-h2{
+h2 {
   display: flex;
-  flex-basis: 100%
-  font-size: 2em;
+  flex-basis: 100% font-size: 2em;
 }
 
-input{
+input {
   display: flex;
   flex-basis: 50%;
+}
+
+#result {
+  display: none;
+  margin: 0px auto 0px auto;
+  width: 250px;
+  height: 400px;
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+}
+
+@@media screen and (min-width: 768px) {
+  #quiz-wrapper {
+    flex-direction: row;
+  }
 }
