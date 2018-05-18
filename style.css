@@ -49,14 +49,22 @@ input {
   flex-basis: 50%;
 }
 
+.choice-image {
+  width: 100px;
+  height: 100px;
+  opacity: 0.55;
+  transition-property: box-shadow 0.5s, opacity 0.5, background-color 0.5s; 
+}
+
 #result {
   display: none;
   margin: 0px auto 0px auto;
   width: 250px;
   height: 400px;
-  background-repeat: none;
+  /* background-repeat: none; */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 @@media screen and (min-width: 768px) {

@@ -1,10 +1,11 @@
+console.log("hello");
 let color = null,
   gamePlay = null,
   role = null;
 
 let pageTitle = document.querySelector('h1'),
 
-  pageTitleText = document.innerHTML(pageTitle),
+  pageTitleText = pageTitle.innerHTML,
 
   tryAgain = document.querySelector('#try-again'),
 
@@ -14,16 +15,56 @@ let pageTitle = document.querySelector('h1'),
 
   formSubmit = document.querySelector('#form-submit');
 
-submit.addEventListener('click', resetQuiz);
-submit.addEventListener('clikc', processResults);
+tryAgain.addEventListener('click', resetQuiz);
+formSubmit.addEventListener('click', processResults);
+
+console.log(formSubmit);
 
 function processResults() {
-  color = document.querySelector('input[name = "color"]: checked'),
-    gamePlay = document.querySelector('input[name = "play-trough"]: checked'),
-    role = document.querySelector('input[name = "character"]: checked');
+  console.log("hi");
+  color = document.querySelector('input[name="color"]:checked'),
+    gamePlay = document.querySelector('input[name="play-through"]:checked'),
+    role = document.querySelector('input[name="character"]:checked');
 
   if (color == null || gamePlay == null || role == null) {
     alert("You must answer All QUESTIONS before submitting");
+  } else {
+    document.getElementById("quiz-wrapper").style.display = "none";
+    document.getElementById("form-submit").style.display = "none";
+    document.getElementById("try-again").style.display = "block";
+    document.getElementById("result").style.display = "block";
+  }
+
+  let personality = getPersonality();
+
+  switch (personality) {
+    case 0:
+      document.querySelector('#page-title').innerHTML = "Super Mario";
+      result.style.background = "url('img/SuperMario.jpeg')";
+      result.style.backgroundRepeat = 'no-repeat';
+      break;
+
+    case 1:
+      document.querySelector('#page-title').innerHTML = "Pokemon";
+      result.style.background = "url('img/Pokemon.jpg')";
+      result.style.backgroundRepeat = 'no-repeat';
+      break;
+
+    case 2:
+      document.querySelector('#page-title').innerHTML = "Super Smash Bros";
+      result.style.background = "url('img/SuperSmash.jpeg')";
+      result.style.backgroundRepeat = 'no-repeat';
+      break;
+
+    case 3:
+      document.querySelector('#page-title').innerHTML = "The Legend of Zelda";
+      result.style.background = "url('img/TLoZ.jpeg')";
+      result.style.backgroundRepeat = 'no-repeat';
+
+      break;
+
+    default:
+
   }
 
 }
@@ -91,7 +132,6 @@ function getPersonality() {
 
   }
 
-  return score;
 
   if (score == 0 || score == 1) {
     return 0;
@@ -99,7 +139,7 @@ function getPersonality() {
   if (score == 2 || score == 3 || score == 4) {
     return 1;
   }
-  if (score == 5 || score == 6) {
+  if (score == 5 || score == 6 || score == 7) {
     return 2;
   }
   if (score > 7) {
@@ -107,8 +147,21 @@ function getPersonality() {
   }
 
 }
-}
+
 
 function resetQuiz() {
+  pageTitle.innerHTML = pageTitleText;
+  quizWrapper.style.display = "flex";
+  formSubmit.style.display = "block";
+  tryAgain.style.display = "none";
+  result.style.display = "none";
+
+  color.checked=false;
+  gamePlay.checked=false;
+  role.checked=false;
+
+  color = null;
+  gamePlay = null;
+  role = null;
 
 }
